@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+
+</head>
+<body>
+<script>
+  //1.原型链
+  //对象都有原型(obj.__proto__),原型又是对象,所以原型又有原型,这样就形成了一个原型链...
+  //2.属性、方法  访问规则
+  //对象访问属性或者方法,先访问自己的,自己没有访问原型的,原型没有就沿着原型链一直往上找,找到为止,如果没有找到就报错或者undefined.
+  //3.Object.prototype对象里面的一些常用成员
+  //4.函数是对象- 他是Function()构造函数实例化出来的对象。
+  //5.构造函数也是函数，所以构造函数也是对象。 - 构造函数也是Function()构造函数创建出来的。
+  //6.构造函数的原型链
+  //7.完整的原型链
+  //8.静态成员、实例成员  Object.prototype  Math.random()        o1.__proto__   arr1.push();
+  //Object.prototype 静态成员
+  //obj1.__proto__ 实例成员
+  //9.instansof  检测一个构造函数的prototype属性，在不在这个对象的原型链上。
+  //语法: 对象 instanceof 构造函数
+  //      p1 instansof  Object
+
+
+
+
+  //继承: js中的继承是对象之间的继承.
+  //为什么要有继承:为了代码的重用.为了简洁代码.
+  //对象A有某一个成员,对象B也想有这个成员,那么就可以让这个对象B继承自这个对象A.
+
+  //混入式
+  // var wangjianlin = {
+  //   car:{
+  //
+  //   }
+  // }
+  // var wangsicong = {gfr:[]};
+  // for(var key in wangjianlin){
+  //   wangsicong[key] = wangjianlin[key];
+  // }
+
+  //替换原型
+  // var wangjianlin = {
+  //   car :{
+//
+  //   }
+  // }
+  // function ZhaNan(gfs){
+  //   this.gfs = gfs;
+  // }
+//
+  // //替换原型.把ZhaNan这个构造函数对应的原型对象,换成了wangjianlin这个对象.
+  // ZhaNan.prototype = wangjianlin;
+  // var wangsicong = new ZhaNan([]);
+
+
+  //混合式
+  // var wangjianlin = {
+  //   car :{
+//
+  //   }
+  // }
+  // function ZhaNan(gfs){
+  //   this.gfs = gfs;
+  // }
+  // //这里不是把原型改成另外的对象,而是往这个原型中添加成员.
+  // for(var key in wangjianlin){
+  //   ZhaNan.prototype[key] = wangjianlin[key];
+  // }
+//
+  // var wangsicong = new ZhaNan([]);
+
+
+
+
+
+  //安全的给内置对象添加方法.
+  //为什么要给内置对象原型添加方法. 因为我觉得他内置的这些方法不满足我的需求. 数组Array
+
+  //为什么不能直接给内置对象的构造函数的原型添加方法的原型.?
+  // //程序员A
+  // Array.prototype.mySort = function () {
+  //   console.log("啊哈,我是新扩展的一个mySort方法");
+  // }
+  // //程序员B
+  // Array.prototype.mySort = function () {
+  //   console.log("哈哈,我是程序员B添加的mySort方法.");
+  // }
+  // //程序员A
+  // var arr = [10,20];
+  // arr.mySort();
+
+
+  //如何安全的给内置对象添加方法呢?
+  function MyArray(){
+  }
+
+  //替换原型继承,让MyArray创建出来的对象,可以调用数组的方法.
+  MyArray.prototype = [];
+
+  //
+  MyArray.prototype.MySort = function () {
+    for(var i = 0 ; i < this.length-1; i++){
+      for(var j = 0 ; j < this.length-1-i; j++){
+        //arr[j]  arr[j+1]
+        if(this[j] > this[j+1]){
+          var temp = this[j];
+          this[j] = this[j+1];
+          this[j+1] = temp;
+        }
+      }
+    }
+  }
+
+  //
+  var myArr1 = new MyArray();
+  myArr1.push(110);
+  myArr1.push(210);
+  myArr1.push(130);
+  myArr1.push(410);
+  myArr1.MySort(); //
+  console.log(myArr1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</body>
+</html>

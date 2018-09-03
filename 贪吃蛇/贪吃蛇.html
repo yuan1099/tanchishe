@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .map{
+    width: 800px;
+    height: 600px;
+    background-color: #cccccc;
+    left: 0px;
+    top: 0px;
+    }
+    </style>
+</head>
+<body>
+<div class="map" id="map"></div>
+</body>
+<script src="Food.js"></script>
+<script>
+    //获取地图
+    var map=document.getElementById('map');
+
+var food1=new Food( );
+    food1.render(map);
+    var snake1=new Snake( );
+    snake1.render(map);
+
+
+
+</script>
+</html>

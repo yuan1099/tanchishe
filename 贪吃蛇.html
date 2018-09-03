@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .map {
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="map" id="map"></div>
+</body>
+<script src="index.js"></script>
+
+<script>
+    //获取地图
+    var map = document.getElementById('map');
+    //创建邮箱控制器对象
+    var game1 = new Game(map);
+    //游戏控制器，开始游戏。
+    game1.startGame();
+
+
+    //创建事物对象
+    //var food1=new Food( );
+    //显示食物
+    //food1.render(map);
+    //创建蛇对象
+    //var snake1=new Snake( );
+    //snake1.render(map);
+
+
+</script>
+</html>
